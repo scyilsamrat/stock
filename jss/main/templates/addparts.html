@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+</style>
+<body>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary bg-danger text-white" data-toggle="modal" data-target="#exampleModal">
+    Add Part
+</button>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content bg-danger text-white">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title " id="exampleModalLabel">Add Part</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action={{curl}}addparts/ class="row g-3
+                ">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="input1" class="form-label">Part Name</label>
+                    <input type="text" name="pname" class="form-control text-dark" id="input1" placeholder="Coil Panja">
+                </div>
+                <div class="col-md-6">
+                    <label for="input2" class="form-label">MRP</label>
+                    <input type="text" name="mrp" class="form-control text-dark" id="input2" placeholder="400">
+                </div>
+                <div class="col-md-6">
+                    <label for="input3" class="form-label">Quantity</label>
+                    <input type="text" name="quantity" class="form-control text-dark" id="input3" placeholder="100">
+                </div>
+                <!--                      <div class="col-md-6">-->
+                <!--                        <label for="input4" class="form-label">Place</label>-->
+                <!--                        <input type="text" name="place" class="form-control text-dark" id="input4" placeholder="Aman Bhiya">-->
+                <!--                    </div>-->
+                <div class="col-md-6">
+                    <label for="input3" class="form-label">Quantity</label>
+                <select class="form-control form-select-lg mb-3" aria-label=".form-select-lg example" name="place">
+                    <option selected>LOCATION</option>
+                    <option value="AMAN">AMAN</option>
+                    <option value="LUCKY">LUCKY</option>
+                    <option value="GNT">GNT</option>
+                    <option value="SHARMAJI">SHARMAJI</option>
+                    <option value="ASHOKA">ASHOKA</option>
+                    <option value="HERO">HERO</option>
+                </select>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-success">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

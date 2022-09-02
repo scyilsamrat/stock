@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<body>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary bg-danger text-white" data-toggle="modal" data-target="#exampleModal">
+    Add Service
+</button>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content bg-danger text-white">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title " id="exampleModalLabel">Add Service Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action={{curl}} class="row g-3">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                        <label for="input1"  class="form-label">Customer Name</label>
+                        <input type="text" name="cname" class="form-control text-dark" id="input1" placeholder="Sahil Sharma">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input2" class="form-label">Mobile Number</label>
+                        <input type="text" name="mobile" class="form-control text-dark" id="input2" placeholder="00000000">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="input3" class="form-label">Bike Name</label>
+                        <input type="text" name="bname" class="form-control text-dark" id="input3" placeholder="HF Deluxe">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="input3" class="form-label">Select Parts</label>
+                    <select name="parts" class="selectpicker text-dark" multiple data-live-search="true">
+                        {% for product in out %}
+                        <option>{{product.pname}}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputZip" class="form-label">Total Bill</label>
+                        <input type="text" name="amount" class="form-control" id="inputZip" placeholder="5000">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="bikeno" class="form-label">Bike Number</label>
+                        <input type="text" name="rnumber" class="form-control" id="bikeno" placeholder="MP08MZ0000">
+                    </div>
+<!--                    <div class="col-12">-->
+<!--&lt;!&ndash;                        <div class="form-check">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <input class="form-check-input" type="checkbox" id="gridCheck">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <label class="form-check-label" for="gridCheck">&ndash;&gt;-->
+<!--&lt;!&ndash;                                Check me out&ndash;&gt;-->
+<!--&lt;!&ndash;                            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </form>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light text-dark" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-success">Save</button>
+            </div>
+             </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+{% endblock %}
+
+
+<!--
+
+cd-slider-nav .image-icon {
+  margin: 0 auto;
+  margin-bottom: 15px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: #ffbb05;
+}
+
+-->
